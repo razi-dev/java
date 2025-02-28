@@ -1,64 +1,26 @@
-public class CPU {
-
-    double price;
+public class CPU
+{
+    int price=34000;
     
-    public CPU(double price) {
-        this.price = price;
+    class Processor
+    {
+        int num_of_cores=8;
+        String manufacturer="AMD";
+        
+        static class RAM
+        {
+            int mem=8;
+            String ram_manufacturer="companyx";
+        }
     }
-
-    class Processor {
-        int cores;
-        String manufacturer;
     
-    
-        public Processor(int cores, String manufacturer) {
-            this.cores = cores;
-            this.manufacturer = manufacturer;
-        }
-
+    public static void main(String args[])
+    {
+        CPU ob=new CPU();
+        CPU.Processor proc_ob= ob.new Processor();
+        Processor.RAM ram_ob= new Processor.RAM();
         
-        public void displayProcessorInfo() {
-            System.out.println("Processor Information:");
-            System.out.println("Number of Cores: " + cores);
-            System.out.println("Manufacturer: " + manufacturer);
-        }
-    }
-
-
-    static class RAM {
-        int memory; 
-        String manufacturer;
-
-        
-        public RAM(int memory, String manufacturer) {
-            this.memory = memory;
-            this.manufacturer = manufacturer;
-        }
-
-        
-        public void displayRAMInfo() {
-            System.out.println("RAM Information:");
-            System.out.println("Memory: " + memory + " GB");
-            System.out.println("Manufacturer: " + manufacturer);
-        }
-    }
-
-
-    public void displayCPUInfo() {
-        System.out.println("CPU Price: $" + price);
-    }
-
-    public static void main(String[] args) {
-
-        CPU myCPU = new CPU(500.00);
-
-        myCPU.displayCPUInfo();
-        CPU.Processor myProcessor = myCPU.new Processor(8, "Intel");
-        myProcessor.displayProcessorInfo();
-
-        // Create an object of RAM (static nested class)
-        CPU.RAM myRAM = new CPU.RAM(16, "Corsair");
-        myRAM.displayRAMInfo();
+        System.out.println("Ram details \nMemmory:"+ram_ob.mem+"\nManufacturer:"+ram_ob.ram_manufacturer);
+        System.out.println("\nProcessor details \nnumber of cores : "+proc_ob.num_of_cores+"\nManufacturer :" + proc_ob.manufacturer);
     }
 }
-
